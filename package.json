@@ -1,0 +1,27 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "\"The Food App\"",
+  "homepage": "https://github.com/DeepakKumar-Nayak/Food-App#readme",
+  "bugs": {
+    "url": "https://github.com/DeepakKumar-Nayak/Food-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepakKumar-Nayak/Food-App.git"
+  },
+  "license": "ISC",
+  "author": "me",
+  "type": "commonjs",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  }
+}

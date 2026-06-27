@@ -1,0 +1,196 @@
+So apko kya lagta hai ki React ke vajah se hi hamara app fast hota hai .. nahi 
+nahi aisa nahi hai React bhi bahut logon ka help leta hai app ko fast banane ke
+React upto an extent fast karta hao uske baad hamare pass bahut sare packages 
+bhi hote hai jo hame help karta hai hamara react aap jo fast karne mein ... 
+
+NPM:
+----
+Npm is not node package manager its not an abbreviation for node package manager 
+but behid the scenes it works as a node package manager because it manages 
+all the packages
+
+aggar hame kuch bhi install karna hai ya phir hame koi bhi package 
+include karna hai  apni project mein uske liye hame npm ki jarurat padti hai ,
+for example 
+
+npm i 
+npm create vite 
+
+write the command npm init 
+---------------------------
+npm init aggar aap karoge toh apko bahut sare swal puchega jaise ki 
+project name
+version 
+description 
+entry point and etc 
+
+apkokuch aise question milega npm ke taraf se jisko apko go through karna hai 
+and hone ke baad apko ek file mileha jiska name hai package.json()
+
+aab yeah hai kya package.json() dekho jabtak yeah file apke pass nahi hai tabtak 
+aap react ya parcel jaise koi bhi library ko install nahi kar sakhte yeah file hi 
+hai jo track rakhta hai apne project mein kya kya udhar liya hai 
+
+aggar aap kisko ko apna project folder bhejte ho toh zahir si bat hai ki aap 
+node modules toh nahi bhej sakhte kyun ki woh bahut bada hota hai ... 
+
+node_modules jahan apko sari libraries download hoti hai nahi bhejata jata kyun ki 
+woh hota hai bahut bada... 
+
+par jab woh ensaan apke folder mein npm install comnnand chalata hai toh 
+
+1. npm sabse pehle package.json ko dhoondta hai !!
+2. Usmein likhi gayi sari dependencies ki list padhta hai 
+3. phir internet se un sabhi libraries ko apne aap download kar deta hai
+
+Ek Sample package.json ka Structure
+
+{
+  "name": "my-awesome-project",
+  "version": "1.0.0",
+  "description": "Mera pehla project",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.9.0"
+  }
+}
+
+
+. scripts: Yahan aap shortcut commands define karte hain (jaise npm start likhte hi Parcel shuru ho jaye).
+
+. dependencies: Wo library jo app ko chalne ke liye hamesha chahiye.
+
+. devDependencies: Wo tools jo sirf coding ke waqt chahiye (jaise Parcel), lekin app deploy hone ke baad unki zaroorat nahi hoti.
+
+
+
+Dependency:
+-----------
+Npm manage all the packages that we are going to install in our system to run 
+our website but sometime these package are also known as Dependency .. !! 
+
+So dependency are the external software module or package that an application
+requires to function properly.
+
+its just a peice code  of written by third party developers that we import
+into our project to handle specefic tasks such as 
+    state management . 
+    ui rendering . 
+    API Calls. 
+
+Dependencies are the pre written code modules that our application leverages 
+to perform specefic functionalities , Instead of writting everything from scratch
+we use these resuable packages to speed up the development and ensure stability
+
+all these dependies are tracked through a file called package.json
+
+har dependency ke pass apna khud ka dependency hoga aggar aap yeah soch raha ho ki 
+package.json ek hi hoga folder mein then nahi aisa nahi hota hai har 
+dependency mein jake dekhoge uske pass khudaka apna dependency hoga. 
+
+package.json file apko es tarah mil jaega but package.lock.json file 
+apko aise milega hi nahi apko uske liye / matlab aajb aap koi dependency install 
+karoge jaise vite, parcel toh NPM do kam karega 
+
+1. Wo library download karke node_modules mein daalta hai.
+2. Wo turant ek package-lock.json file automatically generate kar deta hai.
+
+agggar apne ko bundler install kiya hai for example parcel vite aggar aap 
+package.lock.json mein jaoge apkoo uska actual exact version dekhne ko milega. 
+
+"Kya humein package-lock.json file ko manually edit karna chahiye?"
+Jawab: "Bilkul nahi sir! Ye file npm khud manage karta hai.
+
+
+Node modules:
+-------------
+Jab bhi ham koi bhi bundler install karte hain / package hame aur bhi ek chiz milta hai 
+woh hai noode_modules The heaviest object in the universe ₹
+
+aap koi bhi chiz install karo jaise ki vite ho gaya parcel ho gaya 
+woh install hoke jata hai node_modules ke andar and apne lucide React
+install kiya using npm internet se packages install hoke jate ha node_modules 
+ke andar. 
+
+Aap apne code mein jo import React from 'react' likhte ho, toh computer isi node_modules folder ke andar 
+jaakar React ko dhoondhta hai.
+
+Sabse bada sach: Is folder ko kabhi bhi GitHub par nahi bhejte (upload nahi karte), kyunki ye 
+bahut bhari hota hai aur isse hum package.json ki madad se kabhi bhi wapas generate kar sakte hain.
+
+Important Notes:
+----------------
+node_modules ko github mein push karne ki jarurat nahi h
+ai ek toh file bahut bada hai and aggar hamare pass package.json hai and package.lock.json hai ham waise bhi jab chahhe node_modules ko leke aa sakhta hai 
+
+aap node_modules ko delete karne ke baad bhi aagr aap bas 
+npm install likhoge terminal pe and enter dabaoge apko phirse 
+node_modules mil jaega. 
+
+
+
+Type of Dependency:
+-------------------
+Normal Dependency: Ye wo packages hain jo aapki website ko Browser mein chalne ke liye chahiye hi chahiye. Inke bina aapki app crash ho jayegi.
+    1. Examples: React, Redux, Axios, Framer Motion.
+    2. Logic: Jab aap final build banate ho, toh bundler inka code uthakar dist folder mein daal deta hai.
+
+Dev Dependencies: Ye wo tools hain jo sirf Aapko (Developer ko) chahiye code likhte waqt, testing karte waqt,  ya build banate waqt. Browser ko inke baare mein kuch nahi pata.
+    . Examples: Parcel, Vite, Jest (testing), ESLint (code formatting), Babel.
+    . Logic: Inka kaam sirf dist folder banana hai. Ek baar dist ban gaya, toh inka kaam khatam. Ye final bundle ka hissa nahi bante.
+
+Transitive Depedency:
+--------------------
+aggar hamne ek Dev Dependency install kiya for exmaple parcel 
+parcel ke paas bhi apna khud ka depency hoga woh bhi kisi ke uper depend hoga esko ham bolte hai Transitive dependency
+
+Aapne Parcel install kiya (ye aapki Direct Dependency hai). Lekin Parcel ko chalne ke liye 
+Babel chahiye, aur Babel ko chalne ke liye Access-code chahiye.
+kyun ki parcel apne aap khud se sab kcuh nahi kar sakhta usko bhi help chahiye
+
+Aapne toh sirf Parcel manga tha, lekin Parcel apne saath poori "baraat" 
+(uski apni dependencies) lekar aaya. Inhi piche se aane wali libraries ko hum Transitive Dependencies kehte hain.
+
+2. English Mein (Technical Interview Version)
+"A Transitive Dependency occurs when your project depends on Library A, 
+and Library A itself depends on Library B. Even though you didn't explicitly install Library B, 
+it becomes a part of your project's node_modules because Library A cannot function without it."
+
+"NPM manages these transitive dependencies by building a Dependency Tree. It ensures 
+that all the required sub-packages are fetched and stored so that the primary package (like Parcel) works as expected.
+
+How do you check the Transitive Dependency:
+--------------------------------------------
+Aap 3 tareekon se check kar sakte ho:
+
+node_modules folder: Aap dekhoge ki aapne sirf parcel dala tha, 
+lekin folder mein 100 aur folders aa gaye.
+
+package-lock.json: Is file ko khologe toh wahan har package ke niche ek 
+requires ya dependencies ka section hoga. Wohi transitive dependencies hain.
+
+Command: Terminal mein npm list chalao. Ye aapko ek poora tree dikhayega ki kaun kis par depend hai.
+
+----------------------------------------------------------------------------------
+command to install parcel is: 
+npm i -D parcel 
+
+here iam installing npm as dev dependency not as a normal dependency
+Jab aap npm i -D parcel likhte hain, toh:
+
+npm internet se Parcel naam ka software download karta hai.
+
+Usse utha kar aapke computer mein jo node_modules naam ka folder hai, uske andar daal deta hai.
+
+Aur package.json mein uski entry kar deta hai taaki aapko yaad rahe ki aapne Parcel install kiya hai.
+
+npm (Node Package Manager): Ye ek delivery boy ya courier service ki tarah hai. Iska kaam sirf internet se package uthana aur aapke project folder mein deliver karna hai.
+
+node_modules: Ye aapke project ka "Godown" (Warehouse) hai. Sari ki sari heavy files, library ka code, aur dependencies isi folder mein rakhi jaati hain.
