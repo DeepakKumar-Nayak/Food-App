@@ -1,0 +1,195 @@
+What is CDN
+------------
+it stand for Content Delivery Network. 
+CDN ka full form hota hai Content Delivery Network. Yeh duniya bhar mein 
+phaile hue servers ka ek group (network) hota hai, jo internet par
+websites aur data ko aap tak bahot tezi se pahunchane
+ka kaam karta hai.
+
+Ek simple example se samjhte hain:
+----------------------------------
+Maan lijiye aapko Amazon se ek item kharidna hai. Agar Amazon ka sirf 
+ek hi warehouse America mein ho, toh India tak delivery aane mein
+hafton lag jayenge. Is problem ko solve karne ke liye Amazon ne India 
+ke har bade shahar mein apne local warehouses bana rakhe hain. Jab aap order 
+karte hain, toh item aapke sabse kareeb wale warehouse se aata hai, jisse delivery fast 
+ho jati hai! CDN bilkul yahi kaam websites ke liye karta hai.
+
+
+Bina CDN ke kya hota hai?
+-------------------------
+Agar aap India mein baith kar ek aisi website open kar rahe hain jiska main server 
+(jise Origin Server kehte hain) US mein hai, toh website ke har photo, video, aur 
+page ko US se India travel karke aana padega. Is physical distance ki wajah se 
+website load hone mein time lagta hai, jise technical bhasha mein latency kehte hain.
+
+
+CDN Kaam Kaise Karta Hai?
+CDN is loading time ko lagbhag khatam kar deta hai. Yeh 3 steps mein kaam karta hai:
+
+1. Edge Servers (Local Warehouses): CDN providers (jaise Cloudflare, AWS CloudFront, 
+ya Akamai) poori duniya ke alag-alag shahron mein apne servers laga ke rakhte hain. 
+Inhe Edge Servers ya Point of Presence (PoP) kehte hain.
+
+2. Caching (Copy Save Karna): Jab koi user pehli baar website open karta hai, 
+toh CDN us website ka "static data" (jaise images, videos, fonts, aur design f
+iles) main server se laakar apne Edge Servers par copy karke save kar leta hai. 
+Is process ko caching kehte hain.
+
+3.Fast Delivery: Jab aap ya koi aur aapke aas-paas se us website ko dobara open karta hai, 
+toh request US wale main server tak jaati hi nahi hai. Aapke sabse kareeb wale server 
+(maan lijiye Mumbai ya Delhi) se hi data turant aapke phone par aa jata hai.
+
+----------------------------------------------------------------------------------------------------
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js" defer></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" defer></script>
+
+yeah dono files actual mein hai kya 
+
+Yeh dono links basically React ki aatma (soul) hain! Inhe CDN (Content Delivery Network) 
+links kehte hain.Jab aap React ko bina kisi install-baaji ke (bina npm ya create-react-app ke) seedhe HTML file mein chalana chahte hain, tab ye do scripts kaam aati hain.
+Dono ka kaam alag-alag hai:
+
+
+
+1. React (react.development.js)
+--------------------------------
+Yeh React ki Core Library hai. Iska kaam hai:
+Components banana.
+State aur Props ko manage karna.
+Aapke code ka logic handle karna.
+Iske bina aap React.createElement() jaisi cheezein use nahi kar sakte.
+
+2. React DOM (react-dom.development.js)
+----------------------------------------
+Yeh React aur Browser ke beech ka bridge (pul) hai.
+React ko toh pata hai component kya hota hai, lekin use ye nahi pata ki 
+use HTML page (DOM) par dikhana kaise hai.
+ReactDOM ka kaam hai aapke banaye hue React elements ko uthakar browser 
+ke asli HTML (DOM) mein chipkana (render karna).
+Aap jo root.render() likhte hain, woh isi file ki wajah se chalta hai.
+
+
+
+Inhe kyun use karte hain? (As per Akshay Saini's Tutorial)
+-----------------------------------------------------------
+Akshay Saini apne "Inception" (Day 1) episode mein ye dikhate hain ki React koi 
+jaadu nahi hai, balki sirf ek JavaScript library hai.Aap inhe apni HTML file ke 
+<head> ya <body> mein dalte hain.Iske baad aapko React install karne ki zaroorat 
+nahi padti, browser direct internet se React ko "udhaar" le leta hai.
+
+
+Ek Zaroori Baat:
+----------------
+Aapne jo links likhe hain unme .development.js likha hai. Iska matlab:
+
+Yeh sirf seekhne (development) ke liye hai.Ismein error messages bahut acche se 
+dikhte hain.Lekin ye files thodi bhari (heavy) hoti hain. Jab website 
+live jaati hai, toh hum inki jagah . production.min.js use karte hain 
+jo fast hoti hain.
+
+Heavy" files allowed hain, lekin woh recommended nahi hain. Technical bhasha mein kahein 
+toh ye legal hai par unprofessional hai. Iska asli kaaran samajhne ke liye aapko developer
+ki nazron se dekhna hoga:
+
+1. Development vs Production Files mein antar
+Jo files aap abhi use kar rahe hain (development.js), unmein extra code hota 
+hai jo aapki madad karta hai:
+
+Detailed Error Messages: Agar aapne kuch galat kiya, toh console mein 
+saaf-saaf likha aayega ki kya galti hai.
+
+Comments: File ke andar samjhaya gaya hota hai ki kaunsa function kya kar raha hai.
+
+Source Maps: Debugging asaan ho jati hai. Lekin jab website live jaati hai, toh user 
+ko in error messages ya comments se koi matlab nahi hota. Use chahiye speed.
+
+
+2. "Heavy" hone ka nuksan kya hai?
+----------------------------------
+
+Agar aap heavy files (Development version) ko live website par dalte hain, toh:
+Slow Loading: User ka browser file download karne mein zyada time lega. Agar 
+internet slow hua, toh website "lag" karegi.
+
+SEO Par Asar: Google un websites ko upar dikhata hai jo fast load hoti hain.
+User Experience: Agar website 3 second se zyada load hone mein leti hai, 
+toh 40% log use band kar dete hain.
+
+
+
+Akshay Sir Description:
+------------------------
+rect-development.js is the core file. This is the core of react.  
+react-dom-development.js jo hai useful hota hai dom operations ke liye and it is 
+like a bridge between dom and browsers it will help browsers connect to the dom .. 
+
+
+
+
+const heading = React.createElement('h1', {class:'root'}, 'cotent')
+
+so this create element take three element
+1. tagname 
+2. classname or id name 
+3. content what you want inside h1 Tag. 
+
+console.log(heading) // this is an object
+
+
+Reason Cross-Origin you will see in React Cdn Links:
+----------------------------------------------------
+React ke CDN links (jo aksar react, react-dom ke liye use hote hain) mein 
+crossorigin ka hona aur uske peeche ka main reason "Error Reporting" hai.
+
+Jab aap React ko bina build tools (jaise Vite ya Webpack) ke seedha CDN se 
+load karte hain, toh aap crossorigin attribute ka istemal isliye karte 
+hain taaki Error Handling sahi se kaam kar sake.
+
+Jab aap crossorigin attribute ka use karte hain, toh aap browser ko batate 
+hain ki "main is cross-origin script ko fetch karne ke liye CORS ka istemal 
+kar raha hoon."
+
+Bina crossorigin ke: Agar React ki kisi file mein koi runtime error aata hai, 
+toh browser security reasons (CORS policy) ki wajah se aapke console mein 
+error ki detail nahi dikhata. Woh sirf "Script Error" likha hua dikhayega, 
+jisse aapko yeh nahi pata chalega ki error kis line ya kis file mein hai.
+
+crossorigin ke saath: Browser ko permission mil jaati hai ki woh error ki 
+poori information (file ka naam, line number, column number) aapke browser 
+console mein dikha sake. Development ke dauran yeh bahut zaroori hai.
+
+
+/ const heading = React.createElement('h1', {className:'root'}, 'Hello React')
+// const root = ReactDOM.createRoot(document.querySelector('.root'))
+// root.render(heading)
+
+
+root.render() behind the scenes karta kya hai .??
+-------------------------------------------------
+Haan, bilkul sahi samjhe aap! root.render(heading) ka kaam hi yahi hai ki 
+woh aapke React Element (jo ki ek JavaScript object hota hai) ko asli 
+HTML mein convert karke browser ke DOM (Document Object Model) mein 
+inject (render) kare.
+
+root.render() kya karta hai?
+root.render() woh bridge hai jo React ki Virtual DOM se Real DOM mein data transfer karta hai.
+
+Iske steps yeh hote hain:
+--------------------------
+
+Virtual DOM comparison: React check karta hai ki kya pahle se wahan koi 
+content hai ya nahi.
+
+Conversion: React us JavaScript object (heading) ko browser ke 
+samajhne layak HTML element (<h1>Hello World</h1>) mein convert karta hai.
+
+DOM Injection: Yeh us element ko aapke HTML ke us specific div mein daal 
+deta hai jise aapne root banaya tha (jaise <div id="root"></div>).
+
+
+Kya hota agar aap root.render() nahi karte?
+Agar aap sirf const heading = <h1>Hello World</h1>; likhenge, 
+toh woh sirf ek JavaScript variable mein ek object bankar reh jayega. 
+Browser ko pata hi nahi chalega ki use screen par kya aur kahan dikhana hai.
