@@ -194,3 +194,154 @@ Aur package.json mein uski entry kar deta hai taaki aapko yaad rahe ki aapne Par
 npm (Node Package Manager): Ye ek delivery boy ya courier service ki tarah hai. Iska kaam sirf internet se package uthana aur aapke project folder mein deliver karna hai.
 
 node_modules: Ye aapke project ka "Godown" (Warehouse) hai. Sari ki sari heavy files, library ka code, aur dependencies isi folder mein rakhi jaati hain.
+-----------------------------------------------------------------------------
+
+Accha toh apne dekha hoga ki jab bhi aap koi bhi dependency install karte 
+ho suppose apne parcel ko kiya install usmein apne dekha hoga kuch es tarah 
+likha hoga parcel : "^2.8.3" yeah jo sign hai usko bolte hai carrat (^) 
+and you will somethig like this also parcel : "~2.8.3"
+
+1. Carat (^) - Default
+-----------------------
+Jab aap npm i react karte hain, toh package.json mein apne aap ^18.2.0 jaisa likha aata hai.
+
+Matlab: "Main is major version ke saath rehna chahta hoon."
+Kya update karega: Ye sirf Minor aur Patch updates ko install karega.
+Example: Agar aapke pass ^18.2.0 hai, toh npm 18.9.9 tak ke version ko install kar dega (kyunki 18 wahi hai), lekin 19.0.0 par nahi jayega.
+
+majaor kaun hua pehla number jaise ki abhi 18 hai 
+and minor kaun hua 2usra number jaise ki 2 
+and patch kaun hua last number jo ki abhi ha 0
+
+Kyun: Kyunki Major version mein bade badlav (breaking changes) hote hain, jisse aapka code toot sakta hai. ^ safe hota hai.
+
+2. Tilde (~) - Thoda Conservative
+Agar aap ~18.2.0 likhte hain:
+Matlab: "Main sirf patch updates chahta hoon."
+Kya update karega: Ye sirf Patch updates ko install karega.
+Example: Agar aapke pass ~18.2.0 hai, toh npm 18.2.5 tak toh 
+jayega, lekin 18.3.0 par nahi jayega.
+
+Kyun: Jab aapko stability bahut zyada chahiye ho aur aap nahi chahte ki koi chhota-mota minor feature update bhi aapke project mein koi nayi cheez laye.
+
+tilde only patch allow karta hai yeah apka major and minor dono ko lock karega 
+only the last number ... !!
+
+
+Major Minor And Patch Update:
+-----------------------------
+aggar mere pass 18 ka version install hai 18 se aggar mein kuch dino baad install
+karne mein 19 ayya kuyun ki version toh badalte rehte hai na toh woh ho gaya ek 
+major update ... !! 
+
+toh aggar carat laga hai toh npm kya karega jaise ki abhi mere pass jo version hai
+"react": "^19.2.7", aggar koi update ayya toh kuch aisa aa sakhta hai 
+19.2.3 12.2.8 19.9.9 jaise hi 20.0.0 aaega npm wohi ruk jaega usse jyada nahi 
+jaega ..!!
+
+^ carat mein kya hai pehle number ko mat chedo baki dono ko aap 
+update kar sakhte ho 
+ . 18.2.0 $\rightarrow$ 18.9.9 tak OK hai.
+
+~ (Tilde) = "Pehle aur dusre number ko mat chhedo, sirf teesre ko update karo."18.2.0 $\rightarrow$ 18.2.9 tak OK hai.
+
+
+Note:
+-----
+Carat mein apko naye naye features milte rahenge bina apke code tute. 
+Title is for strict stability kyun ki yahan dono ke dono block hoga ...!!
+mera matlab major and minor. 
+
+
+Carat smart hai tilde outdated type hai.
+
+
+Note:
+------
+package.json:  jab aap npm init karte ho apko ek files hota hai jis mein apki 
+project ki basic jankari aur projects ko chalane ke liye ki kin dependencies
+ki jarurat hai en sabka info hota hai package.json mein ... and yeah file ka 
+control apke hoton mein hota hai esse aap kabi bhi manually update kar sakhte 
+ho and how does it looks like.. !!
+
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "\"The Food App\"",
+  "homepage": "https://github.com/DeepakKumar-Nayak/Food-App#readme",
+  "bugs": {
+    "url": "https://github.com/DeepakKumar-Nayak/Food-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepakKumar-Nayak/Food-App.git"
+  },
+  "license": "ISC",
+  "author": "me",
+  "type": "commonjs",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  }
+}
+
+
+package.lock.json : jab aap npm install karoge ya phir aggar aap koi package 
+install karoge tabhi jake apko yeah file milega 
+
+toh package.json mein only us libraray ka name likha hota hai par 
+package.lock.json mein pura ka pura detail uaka exact version and uski sari 
+dependencies ka tree save hota hai .. 
+
+package.lock.json bahut important file hai esko kabhi  bhi delete nahi karna hota hai .. !!
+
+
+aggar apke pass package.json hai and package.lock.json hai and aap only 
+npm install karoge toh apko automatically node_modules mil jaega .. 
+------------------------------------------------------------------------------
+
+
+integrity : apne dekha hoga package.lock.json mein apko integrity name ka 
+ek key dekhne ko milega bhai usko kabhi bhi chedna mat kabhi bahi nahi 
+
+suppose tumhare pass ek file hai aur tumne us file mein kuch changes kiya 
+aggar tumne kuch bhi changes kiya ek chota sa chota change bhi toh uska pura hash 
+badal jaega .. !! 
+
+version : 1.0.0 hai 
+integrity: "abc-123-xyz" (ye hash version 1.0.0 ki file ka hai)
+
+aab tumne manually usko kar diya like version : 1.0.1
+lekin integrity ko tumne change kiya hi nahi 
+
+aab jab tum npm install karoge tab kya hoga ..!!
+
+woh npm registry se version 1.0.1 wiali file dowload karega 
+download hone ke baad , npm us file ka hash calculate karega 
+
+conflict ayya abhi nayi file (1.0.1) ka hash tumhare purane hash "abc-123-xyz"
+se match hoga hi nahi kyun ki tumhe hash toh kiya nahi tha change 
+
+npm apko ek error dega ki integrity check failed ya Checksum mismatch. !!
+
+toh eska solution hai aggar apko kuch aisa error dekhne ko mile toh aap ek kam 
+karna 
+    1. apne projet folder se aap package.lock.json ko karna delete
+    2. clean node_modules 
+    3. terminal mein npm install chalao.. 
+
+Ek Important Note:
+------------------
+package.lock.json file ko kabhi bhi aap edit mat karo aggar time version bhi 
+update karna hai toh npm install package-name@version command use karo npm 
+khud apne aap version badal dega and hash bhi sahi se update kar dega. !!
+
+kabhi bhi koi bhi bundle aap install karo jaise ki parcel woh install hone ke baad 
+uska sara ka sara code woh node_modules ke anadar hi dal deta hai ..!!
