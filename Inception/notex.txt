@@ -193,3 +193,128 @@ Kya hota agar aap root.render() nahi karte?
 Agar aap sirf const heading = <h1>Hello World</h1>; likhenge, 
 toh woh sirf ek JavaScript variable mein ek object bankar reh jayega. 
 Browser ko pata hi nahi chalega ki use screen par kya aur kahan dikhana hai.
+
+
+
+// removing the cdn links:
+---------------------------
+so apne abhi react and react-dom ko install kar diya hai already ..!! 
+now now you ca remove the CDN Links from the html file and in the file.js just 
+add two line that is. 
+
+import "React" from "react"
+import ReactDOM from 'react-dom/client'
+
+
+and in the html file in App.js add type="module"
+<script type="module" src="./App.js" defer></script>
+
+
+now if you do any changes in the html file that changes will be automatically 
+reflect into the screen  this is know as HMR Hot Module Replacement. 
+
+HMR (Hot Module Replacement) kya hai?:
+---------------------------------------
+HMR ek aisi technique hai jo development ke dauran aapke web application 
+ke modules (files) ko page ko bina pura refresh kiye update kar deti hai.
+
+Yeh kaise kaam karta hai?
+Jab aap npx parcel index.html run karte hain, toh Parcel ek Development 
+Server shuru karta hai jo aapki files par nazar rakhta hai.
+
+Code Change: Jab aap apni kisi file (jaise App.js ya koi CSS file) mein
+change karke Save karte hain, toh Parcel turant detect kar leta hai ki 
+kaunsi file change hui hai.
+
+Partial Update: Parcel pura page refresh nahi karta. Iske bajaye, 
+wo sirf us specific "module" (file) ko update karta hai jisme badlav hua hai.
+
+State Preservation: Sabse badi khasiyat yeh hai ki HMR aapki application ki 
+state (jaise agar aapne koi form bhara hai ya kisi button par click kiya hai) 
+ko maintain rakhta hai, kyunki pura browser refresh nahi hota.
+
+HMR ke fayde:
+Speed: Page refresh hone mein jo time lagta hai, wo bach jata hai.
+
+Focus: Aap code mein chhota sa badlav (jaise font size ya background color) karke turant uska result dekh sakte hain, bina dobara login kiye ya form dobara bhare.
+
+Productivity: Developer ka flow nahi toot-ta.
+
+
+Vite and Parcel Dono mein same to same kam hota hai Vite bhi HMR karta hai and 
+Parcel bhi ..!!
+------------------------------------------------------------------------------------
+
+File: Watcher Algorithim:
+
+Accha toh HMR kya karta hai update karta kahin bhi apne changes kiya hai woh changes
+reflect hota hai par yeah hota kaise ... apne aap kaise hpta hai Parcel ko kaise 
+pata chalta hai ki es file mein change hua hai eske liye Parcel use karta hai 
+File Watcher Algorithim which is written in C++. 
+------------------------------------------------------------------------------------
+
+Parcel Cachings Things For You:
+--------------------------------
+Aab jitni bhi bar aap changes karte ho woh change reflect bhi hota hai and fast bhi hota
+hai aur fast esliye hota hai kyun ki parcel is cachings things for you and yahin pe 
+
+
+Parcel also deos the Image Optimazation  and it is the most expensive 
+things to do loading images in your webpage. 
+
+Parcel also does Minification it will minify your code.
+yeah jo sab kam hai na parcel eske liye allag allag plugins use karta hai jaise ki 
+
+minification ke liye Terser use karta hai ..!!
+Jab aap production build (npx parcel build) karte hain, 
+toh Parcel JavaScript files ko minify karne ke liye Terser ka use karta hai.
+and Terser kya karta hai ..???
+
+    1.  Mangling: Yeh variable aur function ke naam chhota kar deta hai 
+        (e.g., let userProfileName ko let a bana deta hai).
+    2.  Dead Code Removal: Jo code kabhi run nahi hota, use hata deta hai.
+    3.  Whitespace/Comments Removal: Faltu ki jagah (spaces) aur 
+        comments delete kar deta hai.
+
+CSS Minification ke liye Lightening CSS:
+Agar aap apne project mein package.json ko dekhein ya Parcel ke node_modules 
+ke andar parcel folder ko check karein, toh aapko ye dependencies dikh jayengi:
+    @parcel/transformer-terser: Jo Terser ko handle karta hai.
+    @parcel/transformer-css (jo Lightning CSS use karta hai).
+
+1. Bundling ka matlab kya hai?
+Socho tumhare project mein:
+10 JavaScript files hain (App.js, Header.js, Footer.js, Utils.js, etc.)
+5 CSS files hain.
+Kuch images aur assets hain.
+Agar tum browser mein ye sab files alaga-alag load karoge, toh 
+browser ko 20-30 baar  server se request karni padegi. Har request 
+mein time lagta hai (Network Latency).  Bundling ka matlab hai: 
+In saari files ko pakad kar ek (ya kuch) badi files mein merge kar dena.
+
+
+And en sab ke vajah se apka react App fast hota hai Parcel does it everyting 
+for us .. and yes Parcel is also taking help from other libraries to 
+perform all these thigs ..
+----------------------------------------------------------------------
+
+Parcel Compress Things for you:
+Tech mein: Server files ko compress kar deta hai taaki browser tak pahunchte waqt data kam lage aur website turant khul jaye.
+
+
+Note:
+----
+Apko Terser Ko istall karne kei jarurat nahi hai ..!!
+
+Parcel:
+-------
+HRM : Hot Module Replacement.
+File Watcher
+Caching - Faster Builds (.parcel-cache)
+Image-Optimisation
+Minifify your files
+Bundling
+Compress
+Consistent hashing 
+Code Splitting
+Diffrential Bundlig -- to support older browsers 
